@@ -5,7 +5,7 @@ export default [
     layout("routes/admin/admin_layout.tsx", [
         //?1st argument is the path/route, 2nd is the file path
         route("dashboard", "routes/admin/dashboard.tsx"),
-        route("allusers", "routes/admin/all_users.tsx")
+        route("all-users", "routes/admin/all_users.tsx")
     ])
     
 ] satisfies RouteConfig;
