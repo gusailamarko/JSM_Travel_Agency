@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import {SidebarComponent} from "@syncfusion/ej2-react-navigations";
+import { SidebarComponent } from "@syncfusion/ej2-react-navigations";
 import { NavItems, MobileNav } from "../../../components/index";
 
 const adminLayout = () => {
