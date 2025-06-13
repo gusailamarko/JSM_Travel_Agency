@@ -2,7 +2,7 @@ import { OAuthProvider, Query, ID } from "appwrite";
 import { account, appwriteConfig, database } from "./client";
 import { redirect } from "react-router";
 
-//export const -> USED WITHIN FRONTEND
+//export const -> USED WITHIN FRONTEND (written by Junie AI)
 export const loginWithGoogle = async () => {
     try
     {
@@ -143,7 +143,7 @@ export const storeUserData = async () => {
     }
 }
 
-export const getExistingUser = async () => {
+export const getExistingUser = async (userId:string) => {
     try
     {
         const user = await account.get();
