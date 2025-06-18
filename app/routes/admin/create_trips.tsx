@@ -8,6 +8,7 @@ import { useState } from "react";
 import { world_map } from "~/constants/world_map";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
 import { account } from "~/appwrite/client";
+import { useNavigate } from "react-router";
 
 type CountryOption = {
   text: string;
@@ -24,6 +25,8 @@ export const loader = async () => {
 
 const Create_Trips = ({loaderData}:Route.ComponentProps) => {
   const countries = loaderData;
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState<TripFormData>({
     country: countries[0]?.name || '',
     travelStyle: '',
@@ -62,8 +65,32 @@ const Create_Trips = ({loaderData}:Route.ComponentProps) => {
 
     try
     {
-      console.log("User", user);
-      console.log("Form data:", formData);
+      const response = await fetch('/api/create-trip', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          country: formData.country,
+          duration: formData.duration,
+          travelStyle: formData.travelStyle,
+          interests: formData.interest,
+          budget: formData.budget,
+          groupType: formData.groupType,
+          userID: user.$id
+        })
+      })
+
+      const result:CreateTripResponse = await response.json();
+
+      if(result?.id)
+      {
+        navigate(`trips/${result.id}`);
+      }
+      else
+      {
+        console.error("Failed to generate a trip!");
+      }
     }
     catch(e)
     {
