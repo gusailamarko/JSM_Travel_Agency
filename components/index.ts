@@ -4,3 +4,4 @@ export { default as MobileNav } from "./mobileNav";
 export { default as Header } from "./header";
 export { default as StatsCard } from "./statsCard";
 export { default as TripCard } from "./tripCard";
+export { default as InfoPill} from "./infoPill";
