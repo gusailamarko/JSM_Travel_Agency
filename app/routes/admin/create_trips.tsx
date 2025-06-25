@@ -85,7 +85,7 @@ const Create_Trips = ({loaderData}:Route.ComponentProps) => {
 
       if(result?.id)
       {
-        navigate(`trips/${result.id}`);
+        navigate(`/trips/${result.id}`);
       }
       else
       {

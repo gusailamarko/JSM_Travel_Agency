@@ -22,9 +22,9 @@ export const loader = async ({params} : LoaderFunctionArgs) => {
 
     return {
         trip,
-        allTrips: trips.allTrips.map(({$id, tripDetails, imageUrls}) => ({
+        allTrips: trips.allTrips.map(({$id, tripDetail, imageUrls}) => ({
             id: $id,
-            ...parseTripData(tripDetails),
+            ...parseTripData(tripDetail),
             imageUrls: imageUrls ?? []
         }))
     }
@@ -125,7 +125,7 @@ const trip_detail = ({ loaderData }: Route.ComponentProps) => {
                 <h2 className="p-24-semibold text-bold-100">Popular Trips</h2>
                 <div className="trip-grid">
                     {allTrips.map(({id, name, imageUrls, itinerary, interests, travelStyle, estimatedPrice}) => (
-                        <TripCard key={id} id={id} name={name} location={itinerary?.[0].location ?? ""} imageUrl={imageUrls[0]} tags={[interests, travelStyle]} price={estimatedPrice}/>
+                        <TripCard key={id} id={id} name={name} location={itinerary?.[0].location ?? ""} imageUrl={imageUrls[0]} tags={[...[interests], ...[travelStyle]]} price={estimatedPrice}/>
                     ))}
                 </div>
             </section>
